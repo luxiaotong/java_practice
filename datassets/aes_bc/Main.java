@@ -21,10 +21,14 @@ public class Main {
 	public static final Integer KEY_LENGTH = 256;
 	
     public static void main(String[] args) {
+		if (args.length < 2) {
+			System.out.println("error params");
+			return;
+		}
         String auth_token = null;
 		try {
 			Long t = System.currentTimeMillis();
-			auth_token = encrypt("20211117001:31c241309a9231f585bca20c9873b49a:"+t, "31c241309a9231f585bca20c9873b49a");
+			auth_token = encrypt(args[0]+":"+ args[1]+":"+t, args[1]);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

@@ -7,4 +7,4 @@ copy bc*.jar to jre\lib\ext
 docker build -t aes .
 docker run -itd --name aes -v "$PWD":/usr/src/myapp aes /bin/bash
 docker exec -it aes javac -cp commons-lang3-3.0.jar Main.java HexUtil.java
-docker exec -it aes java -cp commons-lang3-3.0.jar:. Main
+docker exec -it aes java -cp commons-lang3-3.0.jar:. Main 20211117001 31c241309a9231f585bca20c9873b49a
