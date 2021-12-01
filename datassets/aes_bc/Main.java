@@ -14,6 +14,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.Key;
 import java.security.Security;
+import java.util.Arrays;
 
 public class Main {
     public static final String KEY_ALGORITHM = "AES";
@@ -29,6 +30,7 @@ public class Main {
 		try {
 			Long t = System.currentTimeMillis();
 			auth_token = encrypt(args[0]+":"+ args[1]+":"+t, args[1]);
+			// auth_token = encrypt("20211117001:31c241309a9231f585bca20c9873b49a:1638345122000", "31c241309a9231f585bca20c9873b49a");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -37,9 +39,12 @@ public class Main {
     }
 
     public static String encrypt(String info, String secret) throws Exception{
+		System.out.println("info: "+ info);
+		System.out.println("secret: "+ secret);
         byte[] data = info.getBytes();
 
         byte[] key = HexUtil.hexStr2ByteArray(secret);
+		System.out.println("key: "+ Arrays.toString(key));
         Key k = toKey(key);
         
 		Security.addProvider(new BouncyCastleProvider());
